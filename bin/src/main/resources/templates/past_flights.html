@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Past Flights</title>
+    <link rel="stylesheet" th:href="@{/styles.css}" />
+</head>
+<body>
+<h1>Past Flights</h1>
+<table>
+    <thead>
+    <tr>
+        <th>Flight Id</th>
+        <th>Departure City</th>
+        <th>Arrival City</th>
+        <th>Departure Date</th>
+        <th>Seat Number</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="flight : ${pastFlights}">
+        <td th:text="${flight.flightId}"></td>
+        <td th:text="${flight.from}"></td>
+        <td th:text="${flight.to}"></td>
+        <td th:text="${#dates.format(flight.date, 'dd-MMM-yyyy')}"></td>
+        <td th:text="${flight.seatNumber}"></td>
+    </tr>
+    </tbody>
+</table>
+
+<form action="#" th:action="@{/dashboard_customer}" method="get">
+    <button type="submit">Back to Dashboard</button>
+</form>
+</body>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Register User</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <style>
+        body {
+             background-image: linear-gradient(135deg, #C3DFFF, #E6CCFF);
+            padding-top: 50px;
+            padding-bottom: 50px;
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        form.container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            padding-bottom: 0;
+            border-radius: 4px;
+            background-color: transparent;
+        }
+
+        form div {
+            margin-bottom: 10px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        button[type="submit"] {
+            display: block;
+            width: 80%;
+            padding: 10px;
+            margin-top: 20px;
+            margin-left: 10%;
+        }
+
+        button[type="submit"]:hover {
+            cursor: pointer;
+        }
+        
+        .warn {
+            color: red;
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .success {
+            text-align: center;
+            margin-top: 20px;
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <h1>User Registration Form</h1>
+    <form class="container" action="#" th:action="@{/register/save_customer}" th:object="${user}" method="post">
+        <div class="mb-3">
+            <label for="username" class="form-label">Username:</label>
+            <input type="text" id="username" th:field="*{username}" required class="form-control" />
+        </div>
+        <div class="mb-3">
+            <label for="password" class="form-label">Password:</label>
+            <input type="password" id="password" th:field="*{password}" required class="form-control" />
+        </div>
+        <div class="mb-3">
+            <label for="firstName" class="form-label">First Name:</label>
+            <input type="text" id="firstName" th:field="*{firstName}" required class="form-control" />
+        </div>
+        <div class="mb-3">
+            <label for="lastName" class="form-label">Last Name:</label>
+            <input type="text" id="lastName" th:field="*{lastName}" required class="form-control" />
+        </div>
+        <div class="mb-3">
+            <label for="email" class="form-label">Email:</label>
+            <input type="email" id="email" th:field="*{email}" required class="form-control" />
+        </div>
+        <div class="mb-3">
+            <label for="dob" class="form-label">Date of Birth:</label>
+            <input type="date" id="dob" th:field="*{dob}" th:value="${user.dob}" required class="form-control" />
+        </div>
+        <div class="mb-3">
+            <label for="phone" class="form-label">Phone:</label>
+            <input type="text" id="phone" th:field="*{phone}" class="form-control" />
+        </div>
+        <div class="mb-3">
+            <label for="address" class="form-label">Address:</label>
+            <input type="text" id="address" th:field="*{address}" class="form-control" />
+        </div>
+        <button type="submit" class="btn btn-primary">Register</button>
+    </form>
+
+   <form class="container" action="#" th:action="@{/login_page}" method="get">
+      <button type="submit" class="btn btn-primary">Login</button>
+   </form>
+    <h2 th:if="${userExist}" class="warn">
+        User already exists. Please go to the login page.
+    </h2>
+    <h2 th:if="${registerSuccess}" class="success">
+        Registration Successfull!
+    </h2>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

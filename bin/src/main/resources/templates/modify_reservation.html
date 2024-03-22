@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Modify Reservation</title>
+    <link rel="stylesheet" th:href="@{/styles.css}" />
+</head>
+<body>
+    <h1>Modify Reservation</h1>
+    <form action="#" th:action="@{/reservation/save_modified_reservation}" th:object="${selectedReservation}" method="post">
+        <input type="hidden" name="reservationId" th:value="*{reservationId}" />
+        <div>
+            <label for="from">Departure City:</label>
+            <input type="text" id="from" th:field="*{from}" required/>
+        </div>
+        <div>
+            <label for="to">Arrival City:</label>
+            <input type="text" id="to" th:field="*{to}" required/>
+        </div>
+        <div>
+            <label for="date">Departure Date:</label>
+            <input type="date" id="date" th:field="*{date}" th:value="${selectedReservation.date}" required/>
+        </div>
+        <div>
+            <label for="seatNumber">Seat Number:</label>
+            <input type="text" id="seatNumber" th:field="*{seatNumber}" />
+        </div>
+        <button type="submit">Save</button>
+    </form>
+
+    <form action="#" th:action="@{/dashboard_customer}" method="get">
+        <button type="submit">Back to Dashboard</button>
+    </form>
+
+    <h2 th:if="${modifyReservationSuccess}" class="success">
+        Modification succeed!
+    </h2>
+    <h2 th:if="${seatOccupied}" class="warn">
+        Seat is occupied! Please choose another seat
+    </h2>
+    <h2 th:unless="${flightExist}" class="warn">
+        No such flight! Please enter a different flight.
+    </h2>
+
+</body>
+</html>

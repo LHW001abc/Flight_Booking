@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+    <link rel="stylesheet" th:href="@{/styles.css}" />
+</head>
+<body>
+    <form action="#" th:action="@{/register/save_customer}" th:object="${user}" method="post">
+        <div>
+            <label for="username">Username:</label>
+            <input type="text" id="username" th:field="*{username}" required/>
+        </div>
+        <div>
+            <label for="password">Password:</label>
+            <input type="password" id="password" th:field="*{password}" required/>
+        </div>
+        <button type="submit">Register</button>
+    </form>
+
+    <form action="#" th:action="@{/login_page}" method="get">
+        <button type="submit">Login</button>
+    </form>
+
+    <h2 th:if="${userExist}" class="warn">
+        User already exists. Please go to login page
+    </h2>
+    <h2 th:if="${registerSuccess}" class="success">
+        Registration Succeed!
+    </h2>
+</body>
+</html>

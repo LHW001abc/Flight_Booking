@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Upcoming Reservations</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            background-image: linear-gradient(to bottom right,rgb(197, 251, 255),rgb(188, 253, 228));
+            padding-top: 80px;
+            padding-bottom: 23%;
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        form {
+            display: inline;
+        }
+
+        button[type="submit"] {
+            padding: 5px 10px;
+            font-size: 14px;
+            border-radius: 4px;
+        }
+
+        button[type="submit"]:hover {
+            cursor: pointer;
+        }
+        
+        .btd {
+            margin-left: 43%;
+        }
+    </style>
+</head>
+<body>
+    <h1>Reservations</h1>
+    <table class="table table-hover table-striped">
+        <thead>
+            <tr>
+				<th>User Id</th>
+				<th>User Name</th>
+                <th>Flight Id</th>
+                <th>Departure City</th>
+                <th>Arrival City</th>
+                <th>Departure Date</th>
+                <th>Seat Number</th>
+                <th>Modify</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="reservation : ${reservations}">
+				<td th:text="${reservation.userId}"></td>
+				<td th:text="${reservation.userName}"></td>
+                <td th:text="${reservation.flightId}"></td>
+                <td th:text="${reservation.from}"></td>
+                <td th:text="${reservation.to}"></td>
+                <td th:text="${#dates.format(reservation.date, 'dd-MMM-yyyy')}"></td>
+                <td th:text="${reservation.seatNumber}"></td>
+                <td>
+                    <form action="#" th:action="@{/user/reservation/modify_reservation}" method="post">
+                        <input type="hidden" name="reservationId" th:value="${reservation.reservationId}" />
+                        <button type="submit" class="btn btn-primary">Modify</button>
+                    </form>
+                </td>
+                <td>
+                    <form action="#" th:action="@{/user/reservation/delete_reservation}" method="post">
+                        <input type="hidden" name="reservationId" th:value="${reservation.reservationId}" />
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <form action="#" th:action="@{/user/dashboard_customer}" method="get">
+        <button type="submit" class="btn btn-secondary btd">Back to Dashboard</button>
+    </form>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

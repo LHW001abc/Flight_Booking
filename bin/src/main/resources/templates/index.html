@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Flight Booking System</title>
+    <link rel="stylesheet" th:href="@{/styles.css}" />
+</head>
+<body >
+    <h1>Flight Booking System</h1>
+    <form action="#" th:action="@{/register/new_admin}" method="get">
+        <button type="submit">New Admin Register</button>
+    </form>
+    <form action="#" th:action="@{/register/new_customer}" method="get">
+        <button type="submit">New Customer Register</button>
+    </form>
+    <form action="#" th:action="@{/login_page}" method="get">
+        <button type="submit">Login</button>
+    </form>
+</body>
+</html>

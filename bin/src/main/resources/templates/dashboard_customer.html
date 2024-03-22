@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Customer Dashboard</title>
+    <link rel="stylesheet" th:href="@{/styles.css}" />
+</head>
+<body>
+    <h1>Customer Dashboard</h1>
+    <form action="#" th:action="@{/reservation/add_reservation}" method="get">
+        <button type="submit">Book a Flight</button>
+    </form>
+    <form action="#" th:action="@{/reservation/reservations}" method="get">
+        <button type="submit">Manage Reservations</button>
+    </form>
+    <form action="#" th:action="@{/reservation/past_flights}" method="get">
+        <button type="submit">Past Flights</button>
+    </form>
+    <form action="#" th:action="@{/customer/profile}" method="get">
+        <button type="submit">View Profile</button>
+    </form>
+    <form action="#" th:action="@{/logout}" method="get">
+        <button type="submit">Logout</button>
+    </form>
+</body>
+</html>

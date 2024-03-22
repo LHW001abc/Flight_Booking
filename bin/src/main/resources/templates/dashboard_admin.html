@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" th:href="@{/styles.css}" />
+</head>
+<body>
+    <h1>Admin Dashboard</h1>
+    <form action="#" th:action="@{/admin/flight_schedules}" method="get">
+        <button type="submit">View Flight Schedules</button>
+    </form>
+    <form action="#" th:action="@{/admin/add_flight}" method="get">
+        <button type="submit">Add Flight Schedule</button>
+    </form>
+    <form action="#" th:action="@{/admin/delete_flight}" method="get">
+        <button type="submit">Delete Flight Schedule</button>
+    </form>
+    <form action="#" th:action="@{/logout}" method="get">
+        <button type="submit">Logout</button>
+    </form>
+</body>
+</html>

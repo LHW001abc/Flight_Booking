@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Flight Schedules</title>
+    <link rel="stylesheet" th:href="@{/styles.css}" />
+</head>
+<body>
+    <h1>Flight Schedules</h1>
+    <table>
+        <thead>
+        <tr>
+            <th>Flight Id</th>
+            <th>Departure City</th>
+            <th>Arrival City</th>
+            <th>Departure Date</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="flight : ${flightSchedules}">
+            <td th:text="${flight.flightId}"></td>
+            <td th:text="${flight.from}"></td>
+            <td th:text="${flight.to}"></td>
+            <td th:text="${#dates.format(flight.date, 'dd-MMM-yyyy')}"></td>
+        </tr>
+        </tbody>
+    </table>
+
+    <form action="#" th:action="@{/dashboard_admin}" method="get">
+        <button type="submit">Back to Dashboard</button>
+    </form>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Upcoming Reservations</title>
+    <link rel="stylesheet" th:href="@{/styles.css}" />
+</head>
+<body>
+    <h1>Reservations</h1>
+    <table>
+        <thead>
+        <tr>
+            <th>Flight Id</th>
+            <th>Departure City</th>
+            <th>Arrival City</th>
+            <th>Departure Date</th>
+            <th>Seat Number</th>
+            <th></th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="reservation : ${reservations}">
+            <td th:text="${reservation.flightId}"></td>
+            <td th:text="${reservation.from}"></td>
+            <td th:text="${reservation.to}"></td>
+            <td th:text="${#dates.format(reservation.date, 'dd-MMM-yyyy')}"></td>
+            <td th:text="${reservation.seatNumber}"></td>
+            <td>
+                <form action="#" th:action="@{/reservation/modify_reservation}" method="post">
+                    <input type="hidden" name="reservationId" th:value="${reservation.reservationId}" />
+                    <button type="submit">Modify</button>
+                </form>
+            </td>
+            <td>
+                <form action="#" th:action="@{/reservation/delete_reservation}" method="post">
+                    <input type="hidden" name="reservationId" th:value="${reservation.reservationId}" />
+                    <button type="submit">Delete</button>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <form action="#" th:action="@{/dashboard_customer}" method="get">
+        <button type="submit">Back to Dashboard</button>
+    </form>
+
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>View Profile</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" />
+    <style>
+        body {
+            background-image: linear-gradient(to bottom right,rgb(197, 251, 255),rgb(188, 253, 228));
+            font-family: Arial, sans-serif;
+            padding-bottom: 50px;
+        }
+        .form-container {
+            padding: 0;
+            border-radius: 5px;
+            max-width: 400px;
+            margin: 0 auto;
+            margin-top: 100px;
+        }
+        h1 {
+            text-align: center;
+            position:absolute;
+            top:35px;
+            left:35%;
+        }
+         button[type="submit"] {
+            display: block;
+            width: 80%;
+            padding: 10px;
+            margin-top: 20px;
+            margin-left: 10%;
+        }
+
+        button[type="submit"]:hover {
+            cursor: pointer;
+        }
+        .warn {
+            color: red;
+            text-align: center;
+            margin-top: 10px;
+        }
+        .success {
+            color: green;
+            text-align: center;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <h1>Profile</h1>
+                <div class="form-container">
+                    <form action="#" th:action="@{/user/customer/save_profile}" th:object="${user}" method="post">
+                        <div class="mb-3">
+				            <label for="username" class="form-label">Username:</label>
+				            <input type="text" id="username" th:field="*{username}" required class="form-control" />
+				        </div>
+				        <div class="mb-3">
+				            <label for="password" class="form-label">Password:</label>
+				            <input type="password" id="password" th:field="*{password}" required class="form-control" />
+				        </div>
+				        <div class="mb-3">
+				            <label for="firstName" class="form-label">First Name:</label>
+				            <input type="text" id="firstName" th:field="*{firstName}" required class="form-control" />
+				        </div>
+				        <div class="mb-3">
+				            <label for="lastName" class="form-label">Last Name:</label>
+				            <input type="text" id="lastName" th:field="*{lastName}" required class="form-control" />
+				        </div>
+				        <div class="mb-3">
+				            <label for="email" class="form-label">Email:</label>
+				            <input type="email" id="email" th:field="*{email}" required class="form-control" />
+				        </div>
+				        <div class="mb-3">
+				            <label for="dob" class="form-label">Date of Birth:</label>
+				            <input type="date" id="dob" th:field="*{dob}" th:value="${user.dob}" required class="form-control" />
+				        </div>
+				        <div class="mb-3">
+				            <label for="phone" class="form-label">Phone:</label>
+				            <input type="text" id="phone" th:field="*{phone}" class="form-control" />
+				        </div>
+				        <div class="mb-3">
+				            <label for="address" class="form-label">Address:</label>
+				            <input type="text" id="address" th:field="*{address}" class="form-control" />
+				        </div>
+                        <button type="submit" class="btn btn-success">Update</button>
+                    </form>
+                </div>
+                <div class="text-center mt-3">
+                    <form action="#" th:action="@{/user/dashboard_customer}" method="get" class="form-container dtd">
+        				<button type="submit" class="btn btn-secondary mt-3 dtd">Back to Dashboard</button>
+    				</form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <h2 th:if="${updateSuccess}" class="success">
+        Update Succeeded!
+    </h2>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

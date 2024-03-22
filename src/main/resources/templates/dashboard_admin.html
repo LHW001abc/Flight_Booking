@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" />
+    <style>
+        body {
+            background-image: url('/images/admindashboard.jpg');
+            background-size: cover;
+            background-position: center;
+            font-family: Arial, sans-serif;
+            padding-top: 80px;
+        }
+        .dashboard-container {
+            max-width: 600px;
+            margin: 0;
+            margin-top: 25%;
+            padding: 20px;
+        }
+        h1 {
+            font-family: monospace;
+            text-align: center;
+            margin-bottom: 30px;
+            margin-left: 30%;
+        }
+        .button-container {
+            display: flex;
+            flex-direction: row;
+            gap: 10px;
+            margin-top: 20px;
+            background-color: transparent; 
+        }
+        .button-container button {
+            color: white; 
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 18px;
+            cursor: pointer;
+            white-space: nowrap; 
+            overflow: hidden;
+            text-overflow: ellipsis;
+            padding: 8px 16px;
+        }
+        .button-container button:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">Admin Dashboard</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-outline-secondary" href="#" th:href="@{/admin/flight_schedules}">View Flight</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-outline-secondary" href="#" th:href="@{/admin/view_bookings}">View Bookings</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-outline-secondary" href="#" th:href="@{/admin/add_flight}">Add Flight</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-outline-secondary" href="#" th:href="@{/admin/delete_flight}">Delete Flight</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-outline-danger" href="#" th:href="@{/logout}" onclick="document.getElementById('logoutForm').submit(); return false;">
+							Logout
+							</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+    <div class="container">
+        <div class="dashboard-container">
+            <h1>Admin Dashboard</h1>
+            <div class="button-container">
+                <form action="#" th:action="@{/admin/flight_schedules}" method="get">
+                    <button type="submit" class="btn btn-secondary">View Flight Schedules</button>
+                </form>
+                <form action="#" th:action="@{/admin/view_bookings}" method="get">
+                    <button type="submit" class="btn btn-secondary">View All Bookings</button>
+                </form>
+                <form action="#" th:action="@{/admin/add_flight}" method="get">
+                    <button type="submit" class="btn btn-secondary">Add Flight Schedule</button>
+                </form>
+                <form action="#" th:action="@{/admin/delete_flight}" method="get">
+                    <button type="submit" class="btn btn-secondary">Delete Flight Schedule</button>
+                </form>
+                <form id="logoutForm" action="#" th:action="@{/logout}" method="post">
+                    <button type="submit" class="btn btn-danger">Logout</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

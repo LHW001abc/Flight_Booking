@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Book a Flight</title>
+    <link rel="stylesheet" th:href="@{/styles.css}" />
+</head>
+<body>
+    <h1>Book a Flight</h1>
+    <form action="#" th:action="@{/reservation/save_created_reservation}" th:object="${flight}" method="post">
+        <div>
+            <label for="from">Departure City:</label>
+            <input type="text" id="from" th:field="*{from}" required/>
+        </div>
+        <div>
+            <label for="to">Arrival City:</label>
+            <input type="text" id="to" th:field="*{to}" required/>
+        </div>
+        <div>
+            <label for="date">Departure Date:</label>
+            <input type="date" id="date" th:field="*{date}" required/>
+        </div>
+        <button type="submit">Reserve</button>
+    </form>
+
+    <form action="#" th:action="@{/dashboard_customer}" method="get">
+        <button type="submit">Back to Dashboard</button>
+    </form>
+    <h2 th:unless="${flightExist}" class="warn">
+        Flight doesn't exist! Please choose a different flight
+    </h2>
+    <h2 th:if="${reservationExist}" class="warn">
+        Reservation already exists! Please choose a different flight
+    </h2>
+    <h2 th:if="${createSuccess}" class="success">
+        Reservation was added to system
+    </h2>
+</body>
+</html>

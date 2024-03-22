@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Flight Booking System</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" />
+    <style>
+        body {
+            overflow: hidden;
+        }
+        .flight-welcome {
+            background-image: url('/images/flightWelcome.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .navbar {
+            background-color: #f8f9fa;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .navbar-brand {
+            font-weight: bold;
+        }
+        .navbar-nav .nav-link {
+            color: #333;
+            font-weight: 500;
+        }
+        .navbar-nav .nav-link:hover,
+        .navbar-nav .nav-link:focus {
+            color: #007bff;
+        }
+        .navbar-toggler {
+            border-color: rgba(0, 0, 0, 0.1);
+        }
+        .navbar-toggler-icon {
+            background-color: #333;
+        }
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+        .btn-primary:hover,
+        .btn-primary:focus {
+            background-color: #0069d9;
+            border-color: #0062cc;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">Flight Booking System</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/register/new_admin">New Admin Register</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/register/new_customer">New User Register</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/login_page">Login</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="flight-welcome">
+        <div class="container text-center">
+            <div style="margin-left: -50px;">
+                <h1>Welcome to Flight Booking System</h1>
+                <form action="#" th:action="@{/register/new_admin}" method="get">
+                    <button type="submit" class="btn btn-primary mt-4">New Admin Register</button>
+                </form>
+                <form action="#" th:action="@{/register/new_customer}" method="get">
+                    <button type="submit" class="btn btn-primary mt-4">New User Register</button>
+                </form>
+                <form action="#" th:action="@{/login_page}" method="get">
+                    <button type="submit" class="btn btn-primary mt-4">Login</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

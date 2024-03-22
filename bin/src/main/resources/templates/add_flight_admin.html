@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Flight</title>
+    <link rel="stylesheet" th:href="@{/styles.css}" />
+</head>
+<body>
+    <h1>Add Flight</h1>
+    <form action="#" th:action="@{/admin/save_added_flight}" th:object="${flight}" method="post">
+        <div>
+            <label for="from">Departure City:</label>
+            <input type="text" id="from" th:field="*{from}" required/>
+        </div>
+        <div>
+            <label for="to">Arrival City:</label>
+            <input type="text" id="to" th:field="*{to}" required/>
+        </div>
+        <div>
+            <label for="date">Departure Date:</label>
+            <input type="date" id="date" th:field="*{date}" required/>
+        </div>
+        <button type="submit">Add</button>
+    </form>
+
+    <form action="#" th:action="@{/dashboard_admin}" method="get">
+        <button type="submit">Back to Dashboard</button>
+    </form>
+    <h2 th:if="${flightExist}" class="warn">
+        Flight already exists!
+    </h2>
+    <h2 th:if="${addFlightSuccess}" class="success">
+        Flight added to system!
+    </h2>
+</body>
+</html>
